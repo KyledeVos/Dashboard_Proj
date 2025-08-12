@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get "involvements/index"
-  get "activities/index"
-  get "percentages/index"
-  get "lectures/index"
-  get "subjects/index"
-  get "grades/index"
-  get "students/index"
-  get "dashboards/index"
+  get "/involvements", to:"involvements#index"
+  get "/activities", to:"activities#index"
+  get "/percentages", to:"percentages#index"
+  get "/lectures", to:"lectures#index"
+  get "/subjects", to:"subjects#index"
+  get "/grades", to: "grades#index"
+  get "/students", to:"students#index"
+  get "/dashboards", to:"dashboards#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "dashboards#index"
 end
