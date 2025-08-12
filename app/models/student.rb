@@ -21,4 +21,13 @@ class Student < ApplicationRecord
       return []
     end
   end
+
+  def self.get_students_count
+    begin
+      return Student.count
+    rescue => error_string
+      Rails.logger.error("Student Model Error during get all students count as: #{error_string}")
+      return "Error"
+    end
+  end
 end

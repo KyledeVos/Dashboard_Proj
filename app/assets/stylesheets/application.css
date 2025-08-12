@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ body{
+    margin: 0;
+    background: black;
+    color: white;
+ }
