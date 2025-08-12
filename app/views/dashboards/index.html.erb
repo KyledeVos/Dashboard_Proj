@@ -10,7 +10,17 @@
                 <h4>Students: <%= @students_total_count %></h4>
             </div>
             <div class="col-12 col-md-6 border border-success">
-                <h2>Totals</h2>
+                <h2>Averages</h2>
+                <h4> School Overall Average: <%= @students_overall_average %> </h4>
+                <% if @grade_averages == "Empty" %>
+                <h4> Average per grade not available </h4>
+                <% else %>
+                <h4> Grade 8: <%= @grade_averages[8]%>% </h4>
+                <h4> Grade 9: <%= @grade_averages[9]%>% </h4>
+                <h4> Grade 10: <%= @grade_averages[10]%>% </h4>
+                <h4> Grade 11: <%= @grade_averages[11]%>% </h4>
+                <h4> Grade 12: <%= @grade_averages[12]%>% </h4>
+                <% end %>
             </div>
         </div>
     </div>
