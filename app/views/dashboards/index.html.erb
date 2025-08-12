@@ -9,17 +9,30 @@
                 <h2>Totals</h2>
                 <h4>Students: <%= @students_total_count %></h4>
             </div>
-            <div class="col-12 col-md-6 border border-success">
+            <div class="col-12 col-md-6 text-center border border-success">
                 <h2>Averages</h2>
                 <h4> School Overall Average: <%= @students_overall_average %> </h4>
                 <% if @grade_averages == "Empty" %>
                 <h4> Average per grade not available </h4>
                 <% else %>
-                <h4> Grade 8: <%= @grade_averages[8]%>% </h4>
-                <h4> Grade 9: <%= @grade_averages[9]%>% </h4>
-                <h4> Grade 10: <%= @grade_averages[10]%>% </h4>
-                <h4> Grade 11: <%= @grade_averages[11]%>% </h4>
-                <h4> Grade 12: <%= @grade_averages[12]%>% </h4>
+                <div class="row p-2 mx-auto justify-content-around"> 
+                    <div class="col-sm-2 col-6 border border-light rounded p-1">
+                        <h4>8: <%= @grade_averages[8]%>% </h4>
+                    </div>
+                    <div class="col-sm-2 col-6 border border-light rounded p-1">
+                        <h4>9: <%= @grade_averages[9]%>% </h4>
+                    </div>
+                    <div class="col-sm-2 col-6 border border-light rounded p-1">
+                        <h4>10: <%= @grade_averages[10]%>% </h4>
+                    </div>
+                    <div class="col-sm-2 col-6 border border-light rounded p-1">
+                        <h4>11: <%= @grade_averages[11]%>% </h4>
+                    </div>
+                    <div class="col-sm-2 col-6 border border-light rounded p-1">
+                        <h4>12: <%= @grade_averages[12]%>% </h4>
+                    </div>
+                
+                </div>
                 <% end %>
             </div>
         </div>

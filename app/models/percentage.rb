@@ -8,7 +8,6 @@ class Percentage < ApplicationRecord
   # Success - Returns Percentage Value as a string
   # Failure - console logs and returns "Error"
   def self.get_school_average_percentage
-    Rails.logger.info("CALLED")
     begin
       total_percentage_sum = 0
       begin
@@ -31,5 +30,5 @@ class Percentage < ApplicationRecord
       return "Error"
     end
   end
-  
+
 end

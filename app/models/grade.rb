@@ -34,7 +34,6 @@ class Grade < ApplicationRecord
                     final_averages[current_grade.grade_value] = 0
                 end              
             end
-            Rails.logger.info("FINAL DATA, #{final_averages}")
             return final_averages
         rescue => error
             Rails.logger.error("Error occured in Grade Model for get students by grade as: #{error}")
