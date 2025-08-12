@@ -1,2 +1,23 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h1>Students</h1>
+<div class="container-fluid table-responsive">
+<table class="table table-primary table-striped table-hover table-bordered align-middle">
+    <thead>
+        <tr>
+            <td>Grade</td>
+            <td>Full Name</td>
+            <td>Days Absent</td>
+            <td>Activities</td>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <%  @student_table_data.each do |student| %>
+        <tr>
+            <td><%= student[:grade] %> </td>
+            <td><%= student[:full_name] %> </td>
+            <td><%= student[:absent_days] %> </td>
+            <td><%= student[:activities].join(", ") %> </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+</div>

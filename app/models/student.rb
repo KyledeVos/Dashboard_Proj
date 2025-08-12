@@ -11,10 +11,11 @@ class Student < ApplicationRecord
         {
           grade: current_student.grade.grade_value,
           full_name: current_student.full_name,
-          days_absent: current_student.absent_days,
+          absent_days: current_student.absent_days,
           activities: current_student.activities.pluck(:name)
         }
       end
+
     rescue => error_string
       Rails.logger.error("Student Model Error during get all students table data as: #{error_string}")
       return []
