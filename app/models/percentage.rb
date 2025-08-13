@@ -16,6 +16,8 @@ class Percentage < ApplicationRecord
           total_percentage = total_percentage_sum / Percentage.count.to_f
           # === Success Return ===
           return "#{total_percentage.round(2)}%"      
+        else
+          return "No data"
         end
       rescue ZeroDivisionError => error
         Rails.logger.error("Zero Division Error in Percentage Model, school average calculation: #{error}")
