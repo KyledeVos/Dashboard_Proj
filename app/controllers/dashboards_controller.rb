@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
     @students_total_count = get_students_total
     @lectures_total_count = get_lectures_total
     @students_overall_average = get_school_total_average
+    @activity_student_count = Activity.get_activity_student_counts
     @grade_averages = get_grade_averages
     @subject_averages_overall = get_avg_subject_percentages
     @all_subject_names = Subject.get_all_subjects_names

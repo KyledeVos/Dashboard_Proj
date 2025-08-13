@@ -1,16 +1,21 @@
 <div class='container-fluid mt-2 g-1'>
-    <div class="w-100 text-center">
-        <h1>School Dashboard</h1>
+    <div class="row align-items-center text-center bg-danger rounded m-2">
+        <div class="col-6">
+            <h1 class="text-start">Dashboard</h1>
+        </div>
+        <div class="col-6 text-end">
+            <%= link_to "Students", students_path, class: "btn btn-secondary" %>
+        </div>     
     </div>
 
     <div class="w-75 g-4 mx-auto">
-        <div class="row w-100 border border-primary gap-0">
-            <div class="col-12 col-md-6 border border-danger rounded">
-                <h2>Totals</h2>
+        <div class="row w-100 gap-0">
+            <div class="col-12 col-sm-6 border border-danger rounded ">
+                <h2 class="text-center">Totals</h2>
                 <h4>Students: <%= @students_total_count %></h4>
                 <h4>Lectures: <%= @lectures_total_count %></h4>
             </div>
-            <div class="col-12 col-md-6 text-center border border-success">
+            <div class="col-12 col-sm-6 text-center border border-danger rounded">
                 <h2>Averages</h2>
                 <h4> School Overall Average: <%= @students_overall_average %> </h4>
                 <% if @grade_averages == "Empty" %>
@@ -38,9 +43,8 @@
             </div>
         </div>
         <div class="row gap-0">
-        <div class="row">
-            
-            <div class = "col-12 col-sm-6">
+        <div class="row mt-2">
+            <div class = "col-12 col-sm-6 border border-danger rounded">
                 <h4 class= "text-center"> Averages Per Subject </h4>
                 <div class="col-12 d-flex flex-wrap btn-group p-1 gap-1">
                 <% @all_subject_names.each do |subject_name| %>
@@ -52,7 +56,7 @@
                     <% end %>
                 <% end %>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center mb-2">
                     <div class="col-12 col-sm-6 border border-light rounded p-3 text-center">
                         <div class="col-12">Overall Percentage: <%= @selected_subject_overall_percentage %></div>
                             <div class = "col-12 mt-2">
@@ -62,10 +66,20 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+                
+                    <div class="col-12 col-sm-6 border border-danger rounded">
+                        <div class="row justify-content-center">
+                        <h4 class= "text-center"> Student Activity Counts<h4>
+                        <div class="col-12 text-center">
+                            <% @activity_student_count.each do |activity_name, student_count| %>
+                                <div class="my-2"><%= activity_name %> : <%= student_count %></div>
+                            <% end %>
+                        </div>
+                    </div
+                </div>
+
             </div>
-            
         </div>
     </div>
 </div>
