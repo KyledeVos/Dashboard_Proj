@@ -36,6 +36,14 @@
                 <% end %>
             </div>
         </div>
+        <% @subject_averages_overall.each do |current_subject, average_value| %>
+            <div class="row">
+                <div class="border border-light rounded">
+                    School Overall: <%= current_subject %>: <%= average_value %>%
+                </div>    
+            </div>
+        <% end %>
+        </div>
     </div>
 </div>
 

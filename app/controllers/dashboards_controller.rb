@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
     @students_total_count = get_students_total
     @students_overall_average = get_school_total_average
     @grade_averages = get_grade_averages
+    @subject_averages_overall = get_avg_subject_percentages
   end
 
   # KPI - Totals
@@ -36,6 +37,13 @@ class DashboardsController < ApplicationController
     else
       return grades_overall_average
     end
+  end
+
+  # get average percentage per subject overall
+  def get_avg_subject_percentages
+
+    subject_percentages = Subject.get_percentages_by_subject
+
   end
 
 end
