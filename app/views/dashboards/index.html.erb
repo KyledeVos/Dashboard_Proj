@@ -8,6 +8,7 @@
             <div class="col-12 col-md-6 border border-danger rounded">
                 <h2>Totals</h2>
                 <h4>Students: <%= @students_total_count %></h4>
+                <h4>Lectures: <%= @lectures_total_count %></h4>
             </div>
             <div class="col-12 col-md-6 text-center border border-success">
                 <h2>Averages</h2>
@@ -37,7 +38,11 @@
             </div>
         </div>
         <div class="row gap-0">
-            <div class="btn-group p-1 gap-1">
+        <div class="row">
+            
+            <div class = "col-12 col-sm-6">
+                <h4 class= "text-center"> Averages Per Subject </h4>
+                <div class="col-12 d-flex flex-wrap btn-group p-1 gap-1">
                 <% @all_subject_names.each do |subject_name| %>
                     <% btn_classes = "btn rounded text-light " %>
                     <% btn_classes += subject_name == @selected_subject ? "border border-danger" : "" %>
@@ -46,10 +51,21 @@
                     <%= submit_tag subject_name, class: btn_classes %>
                     <% end %>
                 <% end %>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-6 border border-light rounded p-3 text-center">
+                        <div class="col-12">Overall Percentage: <%= @selected_subject_overall_percentage %></div>
+                            <div class = "col-12 mt-2">
+                                <% @selected_subject_grade_array.each do |current_grade_data| %>
+                                    <p> <%= current_grade_data %> </p>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        <div class="row">
-        <div class="col-12">Overall Percentage: <%= @selected_subject_overall_percentage %></div>
-        </div>
+            
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def index
     @students_total_count = get_students_total
+    @lectures_total_count = get_lectures_total
     @students_overall_average = get_school_total_average
     @grade_averages = get_grade_averages
     @subject_averages_overall = get_avg_subject_percentages
@@ -10,6 +11,7 @@ class DashboardsController < ApplicationController
     # Subject Selector Data
     subject_data = subject_section_controller
     @selected_subject_overall_percentage = subject_data[:overall]
+    @selected_subject_grade_array = subject_data[:grade_data]
   end
 
   # KPI - Totals
@@ -22,8 +24,23 @@ class DashboardsController < ApplicationController
     end
   end
 
+  def get_lectures_total
+    lectures_total = Lecture.get_lectures_count
+    if lectures_total == "Error"
+      return "Error"
+    else
+      return lectures_total
+    end
+  end
+
 
   # Averages
+
+    def set_selected_subject
+      session[:selected_subject] = params[:subject_name]
+      Rails.logger.info("SELECTED #{session[:selected_subject]}")
+      redirect_to dashboards_path
+    end
 
   # Get the overall average of the whole school
   def get_school_total_average
@@ -60,23 +77,30 @@ class DashboardsController < ApplicationController
     end
     puts "SELECTED OVERALL, #{selected_subject_overall_percentage}"
 
-    
+    # Get Percentages, per Subject for each grade
+    selected_subject_grade_percent = get_percentage_subject_grade
+    data_arr = []
+    selected_subject_grade_percent.each do |grade, subjects_hash|
+        if subjects_hash.key?(selected_subject)
+          data_arr << "Grade #{grade}: #{subjects_hash[selected_subject]}%"
+        end
+    end
+    puts "selected: #{data_arr}"
+
+    final_data[:grade_data] = data_arr
     return final_data
     
   end
 
   # get average percentage per subject overall
   def get_avg_subject_percentages
-
     subject_percentages = Subject.get_percentages_by_subject
-
+  end
+  
+  # get percentages per subject per grade
+  def get_percentage_subject_grade
+    percentage_subject_grade = Grade.get_percentages_by_grade
   end
 
-  def set_selected_subject
-    session[:selected_subject] = params[:subject_name]
-  Rails.logger.info("SELECTED #{session[:selected_subject]}")
-  redirect_to dashboards_path
-
-  end
 
 end

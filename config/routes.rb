@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboards#index"
+
+  # Page not found
+  match '*path', to: 'application#not_found', via: :all
 end

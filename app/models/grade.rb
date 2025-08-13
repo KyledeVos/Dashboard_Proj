@@ -40,5 +40,44 @@ class Grade < ApplicationRecord
             return []
         end
     end
+
+    
+    def self.get_percentages_by_grade
+
+        begin
+
+            final_data = {}
+            Grade.all.each do |current_grade|
+                final_data[current_grade.grade_value] = {}
+                hash_subject = ""
+
+                current_grade.students.each do |current_student|    
+                    current_student.subjects.each do |current_subject|
+                        hash_subject = current_subject.subject_name
+                        grade_percentage_sum = 0
+                        total_count = 0
+                        current_subject.percentages.each do |current_percentage|
+                            if current_percentage.student_id === current_student.id
+                                grade_percentage_sum += current_percentage.percentage_value
+                                total_count += 1
+                            end
+                        end
+                        begin
+                            grade_average = grade_percentage_sum / total_count
+                            final_data[current_grade.grade_value][hash_subject] = grade_average.round(2)
+                        rescue => error
+                            Rails.logger.error("Inner Error in Grade Model, get_percentages_by_grade as: #{error}")
+                        end
+                    end
+                end
+            end
+            puts "BIG FINAL, #{final_data}"
+            return final_data
+
+        rescue => error
+            Rails.logger.error("Error in Grade Model, get_percentages_by_grade as: #{error}")
+            return "Error"
+        end
+    end
 end
 
