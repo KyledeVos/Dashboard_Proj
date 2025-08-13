@@ -3,6 +3,7 @@ require "test_helper"
 class PercentageTest < ActiveSupport::TestCase
   
   test 'check school total percentage value' do
+    puts "START TEST: Percentage Model - school total percentage"
     puts "Before test, Overall Percentage: #{Percentage.get_school_average_percentage}"
 
     # Test data
@@ -24,5 +25,8 @@ class PercentageTest < ActiveSupport::TestCase
     overall_percentage_result = Percentage.get_school_average_percentage
     puts "After test, overall percentage: #{overall_percentage_result}"
     assert_equal "45.0%", overall_percentage_result
+    puts "END TEST: Percentage Controller - school total percentage"
   end
+end
+
 end
