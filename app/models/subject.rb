@@ -3,6 +3,22 @@ class Subject < ApplicationRecord
     has_many :percentages
     has_many :students, through: :percentages
 
+    def self.get_all_subjects_names
+
+        begin
+            subject_names =  Subject.pluck(:subject_name)
+            if subject_names.length > 0
+                return subject_names
+            else
+                Rails.logger.info("Subject model: get_all_subjects_names has no subjects.")
+            end
+        rescue => error
+            Rails.logger.error("Error in Subject model: get_all_subjects_names as: #{error}")
+            return "Error"
+        end
+
+    end
+
     def self.get_percentages_by_subject
         final_data = {}
         begin

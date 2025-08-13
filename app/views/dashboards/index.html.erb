@@ -36,13 +36,20 @@
                 <% end %>
             </div>
         </div>
-        <% @subject_averages_overall.each do |current_subject, average_value| %>
-            <div class="row">
-                <div class="border border-light rounded">
-                    School Overall: <%= current_subject %>: <%= average_value %>%
-                </div>    
+        <div class="row gap-0">
+            <div class="btn-group p-1 gap-1">
+                <% @all_subject_names.each do |subject_name| %>
+                    <% btn_classes = "btn rounded text-light " %>
+                    <% btn_classes += subject_name == @selected_subject ? "border border-danger" : "" %>
+                    <%= form_with url: view_set_selected_subject_path, method: :post, local: true do %>
+                    <%= hidden_field_tag :subject_name, subject_name %>
+                    <%= submit_tag subject_name, class: btn_classes %>
+                    <% end %>
+                <% end %>
             </div>
-        <% end %>
+        <div class="row">
+        <div class="col-12">Overall Percentage: <%= @selected_subject_overall_percentage %></div>
+        </div>
         </div>
     </div>
 </div>

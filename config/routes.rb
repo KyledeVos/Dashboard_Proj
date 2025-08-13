@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/grades", to: "grades#index"
   get "/students", to:"students#index"
   get "/dashboards", to:"dashboards#index"
+
+  post 'dashboards/set_selected_subject', to: "dashboards#set_selected_subject", as:"view_set_selected_subject"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
