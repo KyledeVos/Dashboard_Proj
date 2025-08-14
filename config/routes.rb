@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get "/involvements", to:"involvements#index"
-  get "/activities", to:"activities#index"
-  get "/percentages", to:"percentages#index"
+
+  
   get "/lectures", to:"lectures#index"
-  get "/subjects", to:"subjects#index"
-  get "/grades", to: "grades#index"
   get "/students", to:"students#index"
   get "/dashboards", to:"dashboards#index"
+
+  # add routes when pages are populated
+  # get "/involvements", to:"involvements#index"
+  # get "/activities", to:"activities#index"
+  # get "/percentages", to:"percentages#index"
+  # get "/subjects", to:"subjects#index"
+  # get "/grades", to: "grades#index"
 
   post 'dashboards/set_selected_subject', to: "dashboards#set_selected_subject", as:"view_set_selected_subject"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
