@@ -77,7 +77,6 @@ class DashboardsController < ApplicationController
     else
       final_data[:overall] = "#{selected_subject_overall_percentage}%"
     end
-    puts "SELECTED OVERALL, #{selected_subject_overall_percentage}"
 
     # Get Percentages, per Subject for each grade
     selected_subject_grade_percent = get_percentage_subject_grade
@@ -87,7 +86,6 @@ class DashboardsController < ApplicationController
           data_arr << "Grade #{grade}: #{subjects_hash[selected_subject]}%"
         end
     end
-    puts "selected: #{data_arr}"
 
     final_data[:grade_data] = data_arr
     return final_data

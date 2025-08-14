@@ -14,7 +14,6 @@ def self.get_activity_student_counts
         final_data[current_activity.name] = total_count
 
     end
-    puts "final, #{final_data}"
     return final_data
 
 end

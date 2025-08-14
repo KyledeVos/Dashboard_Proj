@@ -16,6 +16,8 @@
 This is a demo project with a primary goal to show KPI data on a dashboard aimed at providing<br>
 insightful data for a hypothetical school.
 
+Please see the 'progress_track" directory for more on the database design implemented and limits and blockers encountered.
+
 # Features
 
 This project features a dashboard showing data averages for subjects.<br>
@@ -36,14 +38,27 @@ To run the project, you will need to have Ruby installed on your system.
 The migration files to create the tables in the database is included in the clone<br>
 You can confirm this by checking the db/migrate folder and you will see the migration files
 
-In an Ubuntu terminal at the project root, run the command: "bin/rails db:migrate"
+In an Ubuntu terminal at the project root, run the command: "rails db:migrate"
+
+### These are the migrations that were run to create the migration files
+
+When cloning the repo, you do not need to run these
+
+- rails generate model Student grade:references full_name:string absent_days:integer
+- rails generate model Grade grade_value:integer
+- rails generate model Lecture grade:references subject:references name:string
+- rails generate model Subject subject_name:string mandatory_pass:boolean
+- rails generate model Percentage student:references subject:references percentage_value:float
+- rails generate model Activity name:string 
+- rails generate model Involvement student:references activity:references
 
 ## Database Population
 To be able to see data immediately, there is a script located in the script folder called "populate_db.rb"<br>
 To run this script, in the same Ubuntu terminal at the project root run: <br>
+rails runner script/populate_db.rb
 
 ## Starting the project
-In the same Ubuntu terminal, run: "bin/rails server" which will start the project up
+In the same Ubuntu terminal, run: "rails server" which will start the project up
 It can be viewed at 'http://localhost:3000/'
 
 

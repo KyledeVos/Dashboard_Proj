@@ -71,7 +71,6 @@ class Grade < ApplicationRecord
                     end
                 end
             end
-            puts "BIG FINAL, #{final_data}"
             return final_data
 
         rescue => error
