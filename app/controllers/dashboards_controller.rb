@@ -8,6 +8,7 @@ class DashboardsController < ApplicationController
     @subject_averages_overall = get_avg_subject_percentages
     @all_subject_names = Subject.get_all_subjects_names
     @selected_subject = session[:selected_subject] || @all_subject_names[0]
+    session[:selected_subject] ||= @selected_subject
 
     # Subject Selector Data
     subject_data = subject_section_controller
